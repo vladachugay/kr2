@@ -1,0 +1,28 @@
+<h1>Built-in Directives</h1>
+
+<hr><h2>NgSwitch Binding</h2>
+
+<p>Pick your favorite item</p>
+<div>
+  <label *ngFor="let i of items">
+    <div><input type="radio" name="items" [(ngModel)]="currentItem" [value]="i">{{i.name}}
+    </div>
+  </label>
+</div>
+
+<div [ngSwitch]="currentItem.feature">
+  <app-stout-item    *ngSwitchCase="'stout'"    [item]="currentItem"></app-stout-item>
+  <app-device-item   *ngSwitchCase="'slim'"     [item]="currentItem"></app-device-item>
+  <app-lost-item     *ngSwitchCase="'vintage'"  [item]="currentItem"></app-lost-item>
+  <app-best-item     *ngSwitchCase="'bright'"   [item]="currentItem"></app-best-item>
+  <div *ngSwitchCase="'bright'"> Are you as bright as {{currentItem.name}}?</div>
+  <app-unknown-item  *ngSwitchDefault           [item]="currentItem"></app-unknown-item>
+</div>
+
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
